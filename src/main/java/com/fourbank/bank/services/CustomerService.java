@@ -24,12 +24,17 @@ public class CustomerService {
         return new CustomerDTO(customer);
     }
 
-    public List<CustomerDTO> listCustomer() {
+    public List<CustomerDTO> listCustomers() {
         List<CustomerDTO> activeCustomers = customerRepository.findAllByActiveTrue()
                 .stream()
                 .map(CustomerDTO::new)
                 .collect(Collectors.toList());
 
         return activeCustomers;
+    }
+
+    public CustomerDTO searchCustomer(Long id) {
+        Customer customer = customerRepository.findById(id).orElse(null);
+        return new CustomerDTO(customer);
     }
 }

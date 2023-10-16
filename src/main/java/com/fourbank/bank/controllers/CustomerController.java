@@ -1,5 +1,6 @@
 package com.fourbank.bank.controllers;
 
+import com.fourbank.bank.DTO.CustomerDTO;
 import com.fourbank.bank.requests.CustomerRegisterRequest;
 import com.fourbank.bank.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,18 @@ public class CustomerController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity listCustomer() {
-        var listCustomers = customerService.listCustomer();
+    public ResponseEntity listCustomers() {
+        var listCustomers = customerService.listCustomers();
         return ResponseEntity.ok(listCustomers);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerDTO> searchCustomer(@PathVariable Long id) {
+        CustomerDTO customerDTO = customerService.searchCustomer(id);
+
+        if (customerDTO != null) {
+            return ResponseEntity.ok(customerDTO);
+        }
+        return ResponseEntity.notFound().build();
     }
 }
