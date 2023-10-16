@@ -1,4 +1,4 @@
-# GamesApp
+# 4Bank
 
 # About the project
 
