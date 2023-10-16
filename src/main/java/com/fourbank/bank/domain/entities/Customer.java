@@ -2,6 +2,7 @@ package com.fourbank.bank.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fourbank.bank.DTO.AccountsDTO;
+import com.fourbank.bank.DTO.UpdateCustomerDTO;
 import com.fourbank.bank.domain.address.Address;
 import com.fourbank.bank.enums.Benefit;
 import com.fourbank.bank.requests.CustomerRegisterRequest;
@@ -50,5 +51,17 @@ public class Customer {
         this.addresses = request.getAddresses();
         this.accounts = new Account(request.getAccounts());
         this.active = true;
+    }
+
+    public void updateCustomer(UpdateCustomerDTO update) {
+        if (update.id() == null) {
+        } else {
+            if (update.phone() != null)
+                this.phone = update.phone();
+            if (update.benefit() != null)
+                this.phone = update.phone();
+            if (update.addresses() != null)
+                this.addresses = update.addresses();
+        }
     }
 }
