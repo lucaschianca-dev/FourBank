@@ -35,7 +35,7 @@ public class Customer {
 
     @ManyToOne(cascade = CascadeType.ALL) //MANY = Customer AND ONE = Address -- Muitos clinentes para um enderesso
     @JoinColumn(name = "addresses_id") //Aqui eu estou INDO para o endereco
-    @JsonIgnore
+    @JsonIgnore //evitar que fique serializando infinitamente
     private Address addresses;
 
     @OneToOne(cascade = CascadeType.ALL)
