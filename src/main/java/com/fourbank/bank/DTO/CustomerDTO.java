@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CustomerDTO {
 
+    private Long id;
+
     private String name;
 
     private String cpf;
@@ -26,6 +28,7 @@ public class CustomerDTO {
     private Account accounts;
 
     public CustomerDTO(Customer customer) {
+        this.id = customer.getId();
         this.name = customer.getName();
         this.cpf = customer.getCpf();
         this.phone = customer.getPhone();

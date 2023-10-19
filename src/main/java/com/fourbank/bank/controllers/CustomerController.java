@@ -6,9 +6,13 @@ import com.fourbank.bank.requests.CustomerRegisterRequest;
 import com.fourbank.bank.services.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Pageable;
+
 
 @RestController
 @RequestMapping("/customers")
@@ -23,9 +27,9 @@ public class CustomerController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity listCustomers() {
-        var listCustomers = customerService.listCustomers();
-        return ResponseEntity.ok(listCustomers);
+    public ResponseEntity<Page> listCustomers(@PageableDefault(size = 5, page = 0, sort = "name") Pageable pageable) {
+        Page<CustomerDTO> activeCustomers = customerService.listCustomers(pageable);
+        return ResponseEntity.ok(activeCustomers);
     }
 
     @GetMapping("/{id}")

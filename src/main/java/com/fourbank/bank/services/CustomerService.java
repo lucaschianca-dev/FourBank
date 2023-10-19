@@ -7,12 +7,10 @@ import com.fourbank.bank.repositories.CustomerRepository;
 import com.fourbank.bank.requests.CustomerRegisterRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -26,12 +24,8 @@ public class CustomerService {
         return new CustomerDTO(customer);
     }
 
-    public List<CustomerDTO> listCustomers() {
-        List<CustomerDTO> activeCustomers = customerRepository.findAllByActiveTrue()
-                .stream()
-                .map(CustomerDTO::new)
-                .collect(Collectors.toList());
-
+    public Page<CustomerDTO> listCustomers(Pageable pageable) {
+        Page<CustomerDTO> activeCustomers = customerRepository.findAllByActiveTrue(pageable).map(CustomerDTO::new);
         return activeCustomers;
     }
 
