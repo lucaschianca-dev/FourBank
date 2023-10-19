@@ -2,6 +2,9 @@ package com.fourbank.bank.controllers;
 
 import com.fourbank.bank.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +18,8 @@ public class AccountController {
     AccountService accountService;
 
     @GetMapping("/all")
-    public ResponseEntity listAccountss() {
-        var activeAccounts = accountService.listAccounts();
+    public ResponseEntity<Page> listAccountss(@PageableDefault(size = 5, page = 0, sort = "customer") Pageable pageable) {
+        var activeAccounts = accountService.listAccounts(pageable);
         return ResponseEntity.ok(activeAccounts);
     }
 }
