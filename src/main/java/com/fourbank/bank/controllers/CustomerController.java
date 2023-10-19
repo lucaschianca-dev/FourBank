@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 
-
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
