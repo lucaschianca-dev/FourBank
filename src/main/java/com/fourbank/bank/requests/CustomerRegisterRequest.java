@@ -1,6 +1,6 @@
 package com.fourbank.bank.requests;
 
-import com.fourbank.bank.DTO.AccountsDTO;
+import com.fourbank.bank.DTO.AccountDTO;
 import com.fourbank.bank.domain.address.Address;
 import com.fourbank.bank.enums.Benefit;
 import lombok.AllArgsConstructor;
@@ -22,5 +22,5 @@ public class CustomerRegisterRequest {
 
     private Address addresses;
 
-    private AccountsDTO accounts;
+    private AccountDTO accounts;
 }

@@ -1,7 +1,6 @@
 package com.fourbank.bank.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fourbank.bank.DTO.AccountsDTO;
 import com.fourbank.bank.DTO.UpdateCustomerDTO;
 import com.fourbank.bank.domain.address.Address;
 import com.fourbank.bank.enums.Benefit;

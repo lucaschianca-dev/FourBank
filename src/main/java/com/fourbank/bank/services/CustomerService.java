@@ -20,7 +20,7 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @Transactional
+    @Transactional //Ele aparece quando você quer persistir algo no banco de dados
     public CustomerDTO registerCustomer (@Valid CustomerRegisterRequest request) {
         Customer customer = customerRepository.save(new Customer(request));
         return new CustomerDTO(customer);

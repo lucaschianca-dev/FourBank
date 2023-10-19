@@ -1,7 +1,7 @@
 package com.fourbank.bank.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fourbank.bank.DTO.AccountsDTO;
+import com.fourbank.bank.DTO.AccountDTO;
 import com.fourbank.bank.enums.Type;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,7 +33,7 @@ public class Account {
     @JsonBackReference
     private Customer customer;
 
-    public Account(AccountsDTO accountsDTO) {
+    public Account(AccountDTO accountsDTO) {
         this.number = UUID.randomUUID().toString();
         this.type = accountsDTO.getType();
         this.balance = BigDecimal.ZERO;
