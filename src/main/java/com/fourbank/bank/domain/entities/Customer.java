@@ -60,7 +60,9 @@ public class Customer {
             if (update.benefit() != null)
                 this.phone = update.phone();
             if (update.addresses() != null)
-                this.addresses = update.addresses();
+                this.addresses.updateAddress(update);
+            if(update.benefit() != null)
+                this.benefit = update.benefit();
         }
     }
 }

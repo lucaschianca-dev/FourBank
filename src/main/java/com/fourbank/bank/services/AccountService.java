@@ -21,7 +21,7 @@ public class AccountService {
         return activeAccounts;
     }
 
-    public AccountDetailedDTO findAccountByCpf(String number) {
+    public AccountDetailedDTO findAccountByNumber(String number) {
         Account account = accountRepository.findByNumber(number);
         return new AccountDetailedDTO(account);
     }

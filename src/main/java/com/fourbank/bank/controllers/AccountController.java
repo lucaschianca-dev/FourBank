@@ -19,14 +19,14 @@ public class AccountController {
     AccountService accountService;
 
     @GetMapping("/all")
-    public ResponseEntity<Page> listAccountss(@PageableDefault(size = 5, page = 0, sort = "customer") Pageable pageable) {
+    public ResponseEntity<Page> listAccounts(@PageableDefault(size = 5, page = 0, sort = "customer") Pageable pageable) {
         var activeAccounts = accountService.listAccounts(pageable);
         return ResponseEntity.ok(activeAccounts);
     }
 
     @GetMapping("{number}")
-    public ResponseEntity findAccouuntByCpf(@PathVariable String number) {
-        var account = accountService.findAccountByCpf(number);
+    public ResponseEntity findAccountByNumber(@PathVariable String number) {
+        var account = accountService.findAccountByNumber(number);
         return ResponseEntity.ok(account);
     }
 }
